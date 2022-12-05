@@ -1,0 +1,385 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="icon" href="static/images/icon.png" />
+    <link
+      href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css"
+      rel="stylesheet"
+      integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3"
+      crossorigin="anonymous"
+    />
+    <link
+      rel="stylesheet"
+      href="https://cdn.jsdelivr.net/npm/swiper/swiper-bundle.min.css"
+    />
+
+    <link rel="stylesheet" href="static/styles/styles.css" />
+    <link rel="stylesheet" href="static/styles/swiper.css" />
+    <link rel="stylesheet" href="static/styles/table.css" />
+    <title>Trackify - Dashboard</title>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+  </head>
+  <body>
+    <div class="main">
+      <nav class="left_nav">
+
+        <div class="img">
+          <img src="static/images/logo.png" />
+        </div>
+        <ul>
+          <a href="{% url 'index' %}">
+            <li>
+              <div class="li_content">
+                <i class="bi bi-columns-gap"></i>
+                Dashboard
+              </div>
+            </li>
+          </a>
+          <!-- <a> -->
+          <li class="nested">
+            <div class="li_content">
+              <i class="bi bi-clock-history"></i>
+              Timesheets
+              <div class="arrow">
+                <i class="bi bi-caret-left"></i>
+              </div>
+            </div>
+            <ul>
+              <li><a href="{% url 'viewedit' %}">View & Edit</a></li>
+              <li><a href="{% url 'approvals' %}">Approvals</a></li>
+            </ul>
+          </li>
+          <li class="nested active">
+            <div class="li_content">
+              <i class="bi bi-graph-up"></i>
+              Activity
+              <div class="arrow">
+                <i class="bi bi-caret-left"></i>
+              </div>
+            </div>
+            <ul>
+              <li>
+                <a href="{% url 'screenshots' %}">Screenshots</a>
+              </li>
+              <li>
+                <a href="{% url 'apps' %}">Apps</a>
+              </li>
+              <li>
+                <a href="{% url 'urls' %}">URLs</a>
+              </li>
+              <li>
+                <a href="{% url 'quickcheck' %}">Quick Check</a>
+              </li>
+            </ul>
+          </li>
+          <li class="nested">
+            <div class="li_content">
+              <i class="bi bi-check2-square"></i>
+              Project Management
+              <div class="arrow">
+                <i class="bi bi-caret-left"></i>
+              </div>
+            </div>
+            <ul>
+              <li>
+                <a href="{% url 'projects' %}">Projects</a>
+              </li>
+              <li>
+                <a href="{% url 'todos' %}">To-dos</a>
+              </li>
+              <li></li>
+            </ul>
+          </li>
+          <li class="nested">
+            <div class="li_content">
+              <i class="bi bi-file-text"></i>
+              Reports
+              <div class="arrow">
+                <i class="bi bi-caret-left"></i>
+              </div>
+            </div>
+            <ul>
+              <li>
+                <a href="{% url 'time_activity' %}">Time & activity</a>
+              </li>
+              <li>
+                <a href="{% url 'weekly' %}">Weekly</a>
+              </li>
+
+              <li>
+                <a href="{% url 'reports' %}">All reports</a>
+              </li>
+            </ul>
+          </li>
+          <li class="nested">
+            <div class="li_content">
+              <i class="bi bi-people-fill"></i>
+              People
+              <div class="arrow">
+                <i class="bi bi-caret-left"></i>
+              </div>
+            </div>
+            <ul>
+              <li>
+                <a href="{% url 'users' %}">Users</a>
+              </li>
+              <li>
+                <a href="{% url 'teams' %}">Teams</a>
+              </li>
+            </ul>
+          </li>
+          <li class="nested">
+            <div class="li_content">
+              <!-- <i class="bi bi-sliders"></i> -->
+              <i class="bi bi-gear"></i>
+              Settings & Policies
+              <div class="arrow">
+                <i class="bi bi-caret-left"></i>
+              </div>
+            </div>
+            <ul>
+              <li>
+                <a href="{% url 'settings' %}">General</a>
+              </li>
+            </ul>
+          </li>
+        </ul>
+    
+      </nav>
+      <div class="right">
+        <header>
+          <div></div>
+          <div class="icons">
+            <div class="notifications" id="notifications">
+              <!-- <a href="javascript:void(0)" class="bell dropdown">
+                <i class="bi bi-bell"></i>
+              </a> -->
+              <a href="javascript:void(0)" data-bs-toggle="dropdown">
+                <i class="bi bi-bell"></i>
+              </a>
+              <div class="detail dropdown-menu">
+                <div class="header">Notifications (1)</div>
+                <div class="body">
+                  <a href="https://www.youtube.com/">Trackify</a>
+                </div>
+                <div class="footer">See all notifications</div>
+              </div>
+            </div>
+            <div class="user dropdown">
+              <a href="javascript:void(0)" data-bs-toggle="dropdown">
+                <i class="bi bi-person"></i>
+              </a>
+              <div class="detail dropdown-menu">
+                <ul>
+                  <li>My Account</li>
+                  <li>User settings & billing</li>
+                  <hr />
+                  <li>Payments accounts</li>
+                  <li>Integrations</li>
+                  <hr />
+                  <li>Support</li>
+                  <li>Download</li>
+                  <hr />
+                  <li>Sign out</li>
+                </ul>
+              </div>
+            </div>
+          </div>
+        </header>
+        <div class="data">
+          <div class="d-flex justify-content-between">
+            <div class="title col-4">Quick Check</div>
+            <div class="col-4 d-flex justify-content-end">
+              <a href="" class="more-button">
+                <i class="bi bi-gear-fill"></i>
+                <span class="mx-1 text-capitalize">settings</span>
+              </a>
+            </div>
+          </div>
+          <div class="filters mt-3">
+            <div class="left-side-single">
+              <div class="date_filter">
+                <div class="form-group col-6">
+                  <input type="date" class="form-control" />
+                </div>
+                <div class="form-group col-6">
+                  <input type="date" class="form-control" />
+                </div>
+              </div>
+            </div>
+            <div class="right-side">
+              <div class="form-group">
+                <select class="form-select">
+                  <option value="">Abdulaziz Arab</option>
+                  <option value="">Jawad Ali</option>
+                </select>
+              </div>
+              <button class="btn btn-outline-own openfilters">Filters</button>
+            </div>
+          </div>
+          <div class="d-flex justify-content-between mt-5 px-2">
+            <a class="more-button">
+              <i class="bi bi-graph-up"></i>
+              Quick check benchmark
+            </a>
+            <div class="buttons">
+              <a class="more-button mx-2">
+                <i class="bi bi-pencil-square"></i>
+              </a>
+              <a class="more-button">
+                <i class="bi bi-download"></i>
+              </a>
+            </div>
+          </div>
+          <div class="screeenshots_activity">
+            <div class="item col-4">
+              <div class="title">TIME</div>
+              <div class="text">
+                <div class="text-item">
+                  <h4 class="text-dark">0:15</h4>
+                  <p>TOTAL WORKED</p>
+                </div>
+                <div class="text-item">
+                  <h4 class="text-danger">
+                    <i class="bi bi-arrow-down"></i>2:42
+                  </h4>
+                  <p>TO PREV DAY</p>
+                </div>
+              </div>
+            </div>
+            <div class="item col-4">
+              <div class="title">ACTIVITY</div>
+              <div class="text">
+                <div class="text-item">
+                  <h4 class="text-success">76%</h4>
+                  <p>AVERAGE</p>
+                </div>
+                <div class="text-item">
+                  <h4 class="text-danger">
+                    <i class="bi bi-arrow-down"></i>5%
+                  </h4>
+                  <p>TO PREV DAY</p>
+                </div>
+                <div class="text-item">
+                  <h4 class="text-dark">___</h4>
+                  <p>TO ORG AVG</p>
+                </div>
+              </div>
+            </div>
+            <div class="item col-4">
+              <div class="title">TO-DOS</div>
+              <div class="text">
+                <div class="text-item">
+                  <h4 class="text-dark">0</h4>
+                  <p>COMPLETED</p>
+                </div>
+                <div class="text-item">
+                  <h4 class="text-dark">=</h4>
+                  <p>TO PREV DAY</p>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="quick_charts">
+            <div class="item padding">
+              <canvas id="urlChart" class="col-12"></canvas>
+            </div>
+            <div class="item padding">
+              <canvas id="appChart" class="col-12"></canvas>
+            </div>
+            <div class="item padding full">
+              <canvas id="totalTime" class="col-12"></canvas>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <script
+      src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"
+      integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p"
+      crossorigin="anonymous"
+    ></script>
+    <link
+      href="https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/css/select2.min.css"
+      rel="stylesheet"
+    />
+    <script src="https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/js/select2.min.js"></script>
+    <script src="static/scripts/main.js"></script>
+    <script src="static/scripts/urls.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <script>
+      const labels = [
+        'Saturday',
+        'Sunday',
+        'Monday',
+        'Tuesday',
+        'Wednesday',
+        'Thursday',
+        'Friday',
+      ];
+
+      const data = {
+        labels: labels,
+        datasets: [
+          {
+            label: 'Time Worked',
+            backgroundColor: 'rgb(255, 99, 132)',
+            borderColor: 'rgb(255, 99, 132)',
+            data: [0, 10, 5, 2, 20, 30, 45],
+          },
+        ],
+      };
+
+      const appData = {
+        labels: ['Google Chrome', 'Visual Studio Code', 'VLC'],
+        datasets: [
+          {
+            label: 'Total Spent on Apps',
+            data: [300, 50, 100],
+            backgroundColor: ['#3b5998', '#fbad50', '#000000'],
+            hoverOffset: 4,
+          },
+        ],
+      };
+
+      const urlData = {
+        labels: ['Facebook', 'Instagram', 'Tiktok'],
+        datasets: [
+          {
+            label: 'Total Spent on Apps',
+            data: [300, 50, 100],
+            backgroundColor: ['#3b5998', '#fbad50', '#000000'],
+            hoverOffset: 4,
+          },
+        ],
+      };
+
+      const config = {
+        type: 'line',
+        data: data,
+        options: {},
+      };
+      const appConfig = {
+        type: 'doughnut',
+        data: appData,
+      };
+      const urlConfig = {
+        type: 'doughnut',
+        data: urlData,
+      };
+      const totalTime = new Chart(document.getElementById('totalTime'), config);
+      const appChart = new Chart(
+        document.getElementById('appChart'),
+        appConfig
+      );
+      const urlChart = new Chart(
+        document.getElementById('urlChart'),
+        urlConfig
+      );
+    </script>
+  </body>
+</html>

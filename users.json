@@ -1,0 +1,61 @@
+[
+    {
+        "credentials": {
+            "username": "Abdullah",
+            "password": "Abdullah123"
+        },
+        "settings": {
+            "screenshot delay": 5
+        },
+        "projects": [
+            {
+                "project name": "xZ",
+                "project time": "00:00:00",
+                "project idol": "00:00:00",
+                "project screenshots": [],
+                "project clicks": 0,
+                "project presses": 0
+            },
+            {
+                "project name": "dasc",
+                "project time": "00:00:00",
+                "project idol": "00:00:00",
+                "project screenshots": [],
+                "project clicks": 0,
+                "project presses": 0
+            },
+            {
+                "project name": "casca",
+                "project time": "00:00:00",
+                "project idol": "00:00:00",
+                "project screenshots": [],
+                "project clicks": 0,
+                "project presses": 0
+            },
+            {
+                "project name": "casac",
+                "project time": "00:00:00",
+                "project idol": "00:00:00",
+                "project screenshots": [],
+                "project clicks": 0,
+                "project presses": 0
+            },
+            {
+                "project name": "cas",
+                "project time": "00:00:00",
+                "project idol": "00:00:00",
+                "project screenshots": [],
+                "project clicks": 0,
+                "project presses": 0
+            },
+            {
+                "project name": "xa",
+                "project time": "00:00:00",
+                "project idol": "00:00:00",
+                "project screenshots": [],
+                "project clicks": 0,
+                "project presses": 0
+            }
+        ]
+    }
+]
