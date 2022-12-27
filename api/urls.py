@@ -9,6 +9,12 @@ router.register('usersettings', UserSettings, basename='screenshots')
 router.register('timesheets', TimeSheets, basename='timesheets')
 
 
+project_router = routers.NestedDefaultRouter(router, 'projects', lookup='project')
+project_router.register('screenshots', ScreenShots, basename='project-screenshtos')
+# project_router.register('timesheets', project_view.TimeSheets, basename='timesheet-screenshtos')
+
+
 urlpatterns = [
-    path('', include(router.urls))
+    path('', include(router.urls)),
+    path('', include(project_router.urls))
 ]

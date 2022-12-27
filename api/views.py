@@ -29,12 +29,23 @@ class Projects(viewsets.ModelViewSet):
 class ScreenShots(viewsets.ModelViewSet):
     serializer_class = ScreenShotSerializer
     def get_queryset(self):
-        queryset = ScreenShot.objects.all()
+        try:
+            if self.kwargs["project_pk"]:
+                queryset = ScreenShot.objects.filter(project=self.kwargs["project_pk"])
+        except:
+            queryset = ScreenShot.objects.all()
         size = self.request.query_params.get('size')
         if size is not None:
             self.pagination_class = PageNumberPagination
             PageNumberPagination.page_size = size
+        
         return queryset
+
+    def get_serializer_context(self):
+        try:
+            return {"project_id": self.kwargs["project_pk"]}
+        except: pass
+        return {}
 
 
 class UserSettings(viewsets.ModelViewSet):

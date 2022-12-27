@@ -29,6 +29,12 @@ class ScreenShotSerializer(serializers.ModelSerializer):
             'screenshot',
             'project'
         ]
+    def create(self, validated_data):
+        try:
+            project_id = self.context["project_id"]
+        except:
+            return ScreenShot.objects.create(**validated_data)
+        return ScreenShot.objects.create(project_id=project_id, **validated_data)
 
 class UserSettingSerializer(serializers.ModelSerializer):
     class Meta:
